@@ -12,6 +12,7 @@ struct ListNode* pushNode(int value, struct ListNode* listPtr);
 struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
     int addend1, addend2, sum;
     struct ListNode* l3 = (struct ListNode*)malloc(sizeof(struct ListNode));
+    l3 = NULL;
     int carry = 0;
     int sameSize = count(l1) - count(l2);
     //lists should be in the same size
@@ -33,8 +34,8 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
         addend1 = l1->val; 
         addend2 = l2->val;
         sum = addend1+addend2+carry;
-        printf("l1 is %d; l2 is %d; l3 is %d\n", addend1, addend2, l3->val);
-        if(sum > 10){
+        printf("l1 is %d; l2 is %d\n", addend1, addend2);
+        if(sum >= 10){
             sum = sum % 10;
             carry = 1;
         }
@@ -67,14 +68,15 @@ struct ListNode* pushNode(int value, struct ListNode* listPtr){
     newNode->val = value;
     newNode->next = NULL;
     
-    if(listPtr == NULL){
+    if(tempPtr == NULL){
         listPtr = newNode;
+        printf("pushing first Node val = %d\n", value);
         return listPtr;
     }
     
     while(tempPtr->next != NULL){
         tempPtr = tempPtr->next;     
-    }
+    }printf("pushing val = %d\n", value);
     tempPtr->next = newNode;
     newNode = NULL;
     tempPtr = NULL;
