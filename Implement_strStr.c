@@ -35,9 +35,6 @@ int compareStrings(char* haystack, char* needle){
     if(strcmp(haystackPart, needle)==0){
         flag = 1;
     }
-    else{
-        flag = 0;
-    }
     free(haystackPart);
     return flag;
 }
