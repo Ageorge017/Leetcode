@@ -9,6 +9,12 @@ public class Solution {
         int upperBound = arrayLen-1;
         int middle; 
         
+        if(target > nums[upperBound]){
+            return upperBound+1;
+        }
+        else if(target <= nums[lowerBound]){
+            return lowerBound;
+        }  
         while(true){
             middle = lowerBound+upperBound/2;
             if(nums[middle]>target){
@@ -19,9 +25,9 @@ public class Solution {
             }
             if(nums[middle]==target)
                 return middle;
-            /*if(upperBound-lowerBound == 1){
-                
-            } */               
+            if(upperBound-lowerBound == 1){
+                return upperBound;    
+            }              
         }
         return 0;
     }
