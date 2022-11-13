@@ -1,27 +1,22 @@
-function threeSum(nums: number[]): number[][] {
+function threeSum(nums: number[]): number[][] | string[][] {
   const numsLength = nums.length;
-  const sumSet: Record<string, number> = {};
+  const sumSet: Record<string, number[]> = {};
   if (numsLength === 3)
     return nums.reduce((prev, curr) => prev + curr, 0) ? [] : [nums];
   for (let i = 0; i < numsLength; i++) {
     for (let j = i + 1; j < numsLength; j++) {
       if (i !== j) {
         const [a, b, sum] = [nums[i], nums[j], -nums[i] - nums[j]];
-        const key = [a, b, sum].sort();
         const hasSum = nums.indexOf(sum);
-        if (hasSum >= 0 && !(hasSum === i || hasSum === j))
-          sumSet[key.toString()] = sumSet[key.toString()]++ || 0;
+        if (hasSum >= 0 && !(hasSum === i || hasSum === j)) {
+          const key = [a, b, sum].sort();
+          const stringKey = key.toString();
+          if (!sumSet[stringKey]) sumSet[stringKey] = key;
+        }
       }
     }
   }
-  const keyArr = Object.keys(sumSet).map((key) => key.split(","));
-  return keyArr.map<number[]>((key) => {
-    let numberArr: number[] = [];
-    for (let i = 0; i < key.length; i++) {
-      numberArr.push(parseInt(key[i]));
-    }
-    return numberArr;
-  });
+  return Object.values(sumSet);
 }
 
 const runTest = () => {
