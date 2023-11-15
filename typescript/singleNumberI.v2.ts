@@ -1,5 +1,6 @@
-const xorNumbersArray = (nums:number[]) => nums.reduce((previousNum, currentNum)=>previousNum^currentNum);
+const xorNumbersArray = (nums: number[]) =>
+  nums.reduce((previousNum, currentNum) => previousNum ^ currentNum);
 
-function singleNumber(nums: number[]): number {
-    return xorNumbersArray(nums);
-};
+export function singleNumber(nums: number[]): number {
+  return xorNumbersArray(nums);
+}

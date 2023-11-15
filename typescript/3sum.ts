@@ -1,4 +1,4 @@
-function threeSum(nums: number[]): number[][] | string[][] {
+export function threeSum(nums: number[]): number[][] | string[][] {
   const numsLength = nums.length;
   const sumSet: Record<string, number[]> = {};
   if (numsLength === 3)

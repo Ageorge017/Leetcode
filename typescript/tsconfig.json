@@ -1,10 +1,19 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "ES2022",
-    "sourceMap": true,
+    "module": "CommonJS",
+    "inlineSourceMap": true,
     "outDir": "build",
     "lib": ["dom", "es2022"],
-    "rootDir": "./"
-  }
+    "rootDir": "./",
+    "noEmit": false,
+    "esModuleInterop": true,
+    "paths": {
+      "classes": ["./classes"],
+      "src": ["./src"],
+      "helpers": ["./helpers"]
+    }
+  },
+
+  "exclude": ["./build/**/*"]
 }

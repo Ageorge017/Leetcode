@@ -1,13 +1,6 @@
-class ListNode {
-  val: number;
-  next: ListNode | null;
-  constructor(val?: number, next?: ListNode | null) {
-    this.val = val === undefined ? 0 : val;
-    this.next = next === undefined ? null : next;
-  }
-}
+import { ListNode } from "./classes/ListNode";
 
-function hasCycle(head: ListNode | null): boolean {
+export function hasCycle(head: ListNode | null): boolean {
   if (!head) return false;
   let rabbit: ListNode | null = head;
   let tortoise: ListNode | null = head;

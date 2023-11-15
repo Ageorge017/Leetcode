@@ -15,7 +15,7 @@ const findSingleNumbersInstance = (counts: NumberInstances): string[] => {
   return singleKey;
 };
 
-function singleNumber(nums: number[]): string[] | number[] {
+export function singleNumber(nums: number[]): string[] | number[] {
   if (nums.length === 2) return nums;
   const numberCounts = countNumberInstances(nums);
   return findSingleNumbersInstance(numberCounts);

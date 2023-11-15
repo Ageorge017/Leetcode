@@ -1,4 +1,4 @@
-function letterCombinationsHelper(
+export function letterCombinationsHelper(
   nextLetterGroupLists: string[][],
   letter = ""
 ): string[] {

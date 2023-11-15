@@ -1,9 +1,11 @@
 import { preorderTraversal } from "./binaryTreePreorderTraversal";
-import { TreeNode } from "./classes/TreeNode";
+import { TreeNode } from "./classes";
 
 function runTests<T, S>(testCases: T[], callback: (param: T) => S): S[] {
   return testCases.map((testCase, index) => {
-    console.log(`Running test case ${index}.\nInput: ${testCase}`);
+    console.log(
+      `Running test case ${index}.\nInput: ${JSON.stringify(testCase)}`
+    );
     const result = callback(testCase);
     console.log(`Output: ${result}`);
     console.log(`---------------------------------------------------------`);
@@ -12,11 +14,17 @@ function runTests<T, S>(testCases: T[], callback: (param: T) => S): S[] {
 }
 
 function main() {
-  const testCases: TreeNode[] = [];
-  const results = runTests(testCases, preorderTraversal);
+  const testCases = [[1, null, 2, 3], [], [1]];
+
+  const results = runTests(
+    constructTreeNodeFromArray(testCases),
+    preorderTraversal
+  );
   results.forEach((result, index) => {
     console.log(`${index}: ${testCases[index]} --> ${result}`);
   });
 
   return;
 }
+
+main();
