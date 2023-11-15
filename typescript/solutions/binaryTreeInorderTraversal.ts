@@ -1,4 +1,4 @@
-import { TreeNode } from "./classes/TreeNode";
+import { TreeNode } from "../classes/TreeNode";
 
 function inorderTraversal(root: TreeNode | null): number[] {
   return checkNodes(root, []);

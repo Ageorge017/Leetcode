@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "npm run build && node ./build/index"
+    "start": "npm run build && node ./build/index",
+    "clean": "rm -rf ./build"
   },
   "author": "albertgeorge",
   "license": "ISC",

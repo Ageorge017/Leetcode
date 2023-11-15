@@ -1,4 +1,4 @@
-import { ListNode } from "./classes/ListNode";
+import { ListNode } from "../classes/ListNode";
 
 const isInList = (head: ListNode, nodesList: ListNode[]): boolean =>
   nodesList.includes(head);

@@ -8,12 +8,9 @@
     "rootDir": "./",
     "noEmit": false,
     "esModuleInterop": true,
-    "paths": {
-      "classes": ["./classes"],
-      "src": ["./src"],
-      "helpers": ["./helpers"]
-    }
+    "moduleResolution": "node",
+    "baseUrl": "./"
   },
-
+  "include": ["**/*.ts"],
   "exclude": ["./build/**/*"]
 }

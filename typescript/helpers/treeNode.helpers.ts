@@ -1,3 +1,5 @@
+import { TreeNode } from "../classes/TreeNode";
+
 export const constructTreeNodeFromArray = (
   testCases: (number | null)[][]
 ): TreeNode[] => {
@@ -35,5 +37,3 @@ export const constructTreeNodeFromArray = (
     return rootNode;
   });
 };
-
-main();

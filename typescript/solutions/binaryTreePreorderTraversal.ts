@@ -1,4 +1,4 @@
-import { TreeNode } from "./classes/TreeNode";
+import { TreeNode } from "../classes/TreeNode";
 
 export function preorderTraversal(root: TreeNode | null): number[] {
   const visited: TreeNode[] = [];

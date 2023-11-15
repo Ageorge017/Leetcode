@@ -1,5 +1,5 @@
-import { preorderTraversal } from "./binaryTreePreorderTraversal";
-import { TreeNode } from "./classes";
+import { constructTreeNodeFromArray } from "./helpers/treeNode.helpers";
+import { preorderTraversal } from "./solutions/binaryTreePreorderTraversal";
 
 function runTests<T, S>(testCases: T[], callback: (param: T) => S): S[] {
   return testCases.map((testCase, index) => {
