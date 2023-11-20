@@ -1,3 +1,4 @@
-tsconfig.json
-/typescriptBuilds
+/typescript/build
 /.vscode
+node_modules/
+/dart/.dart_tool/

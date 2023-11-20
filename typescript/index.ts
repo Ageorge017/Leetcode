@@ -1,5 +1,4 @@
-import { constructTreeNodeFromArray } from "./helpers/treeNode.helpers";
-import { preorderTraversal } from "./solutions/binaryTreePreorderTraversal";
+import { myAtoi } from "./solutions/atoi";
 
 function runTests<T, S>(testCases: T[], callback: (param: T) => S): S[] {
   return testCases.map((testCase, index) => {
@@ -14,12 +13,9 @@ function runTests<T, S>(testCases: T[], callback: (param: T) => S): S[] {
 }
 
 function main() {
-  const testCases = [[1, null, 2, 3], [], [1]];
+  const testCases = ["-42", "12345", "Hello 4193 blah", "4193 ith wwords", "       -7434"];
 
-  const results = runTests(
-    constructTreeNodeFromArray(testCases),
-    preorderTraversal
-  );
+  const results = runTests(testCases, myAtoi);
   results.forEach((result, index) => {
     console.log(`${index}: ${testCases[index]} --> ${result}`);
   });
