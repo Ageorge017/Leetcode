@@ -1,5 +1,6 @@
+// Don't judge me. Trying to learn some Dart here lol
+
 class Solution {
-  
   int myAtoi(String s) {
     final String trimmedS = s.trim();
     String newString = "";
@@ -17,22 +18,22 @@ class Solution {
         if (int.tryParse(trimmedS[i]) != null) {
           newString += trimmedS[i];
         } else {
-          return isInRange(int.parse(newString));
+          return isInRange(BigInt.tryParse(newString) ?? BigInt.from(0));
         }
       }
     }
 
-    return isInRange(int.parse(newString));
+    return isInRange(BigInt.tryParse(newString) ?? BigInt.from(0));
   }
 
-  int isInRange(int num) {
+  int isInRange(BigInt num) {
     const int upperLimit = 2147483647;
     const int lowerLimit = -2147483648;
 
-    return num < lowerLimit
+    return num < BigInt.from(lowerLimit)
         ? lowerLimit
-        : num > upperLimit
+        : num > BigInt.from(upperLimit)
             ? upperLimit
-            : num;
+            : num.toInt();
   }
 }
