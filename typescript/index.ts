@@ -1,4 +1,4 @@
-import { myAtoi } from "./solutions/atoi";
+import { divide } from "./solutions/integerDivision";
 
 function runTests<T, S>(testCases: T[], callback: (param: T) => S): S[] {
   return testCases.map((testCase, index) => {
@@ -13,9 +13,26 @@ function runTests<T, S>(testCases: T[], callback: (param: T) => S): S[] {
 }
 
 function main() {
-  const testCases = ["-42", "12345", "Hello 4193 blah", "4193 ith wwords", "       -7434"];
+  const testCases = [
+    [10, 3],
+    [50, 7],
+    [-50, 7],
+    [-50, -7],
+    [50, -7],
+    [2, 2],
+    [2, -2],
+    [1, 100],
+    [-1, 100],
+    [1, -100],
+    [7, -3],
+    [-2147483648, 1],
+    [-2147483648, -1],
+    [2147483648, -1],
+    [2147483648, 1],
+    [2147483647, 3]
+  ];
 
-  const results = runTests(testCases, myAtoi);
+  const results = runTests(testCases, divide);
   results.forEach((result, index) => {
     console.log(`${index}: ${testCases[index]} --> ${result}`);
   });
