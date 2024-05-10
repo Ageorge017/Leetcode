@@ -1,4 +1,4 @@
-import { mergeAlternately } from "./solutions/mergeStringsAlternatively";
+import { intToRoman } from "./solutions";
 
 function runTests<T, S>(testCases: T[], callback: (param: T) => S): S[] {
   return testCases.map((testCase, index) => {
@@ -13,14 +13,9 @@ function runTests<T, S>(testCases: T[], callback: (param: T) => S): S[] {
 }
 
 function main() {
-  const testCases = [
-    ["abc", "pqr"],
-    ["ab", "pqrs"],
-    ["abcd", "pq"],
-    ["a", "p"],
-  ];
+  const testCases = [3749, 58, 1994, 1, 3999, 500, 900];
 
-  const results = runTests(testCases, mergeAlternately);
+  const results = runTests(testCases, intToRoman);
   results.forEach((result, index) => {
     console.log(`${index}: ${testCases[index]} --> ${result}`);
   });
