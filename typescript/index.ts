@@ -1,4 +1,4 @@
-import { intToRoman } from "./solutions";
+import { letterCombinations } from "./solutions";
 
 function runTests<T, S>(testCases: T[], callback: (param: T) => S): S[] {
   return testCases.map((testCase, index) => {
@@ -13,9 +13,10 @@ function runTests<T, S>(testCases: T[], callback: (param: T) => S): S[] {
 }
 
 function main() {
-  const testCases = [3749, 58, 1994, 1, 3999, 500, 900];
+  // const testCases = ["23", "", "2", "9999", "2345"];
+  const testCases = ["2345"];
 
-  const results = runTests(testCases, intToRoman);
+  const results = runTests(testCases, letterCombinations);
   results.forEach((result, index) => {
     console.log(`${index}: ${testCases[index]} --> ${result}`);
   });
