@@ -1,4 +1,5 @@
-import { letterCombinations } from "./solutions";
+import { ListNode } from "classes/ListNode";
+import { maxAreaOptimized as testFunction } from "./solutions";
 
 function runTests<T, S>(testCases: T[], callback: (param: T) => S): S[] {
   return testCases.map((testCase, index) => {
@@ -13,10 +14,12 @@ function runTests<T, S>(testCases: T[], callback: (param: T) => S): S[] {
 }
 
 function main() {
-  // const testCases = ["23", "", "2", "9999", "2345"];
-  const testCases = ["2345"];
-
-  const results = runTests(testCases, letterCombinations);
+  const testCases = [
+    [1, 8, 6, 2, 5, 4, 8, 3, 7],
+    [1, 1],
+    [7, 3, 8, 4, 5, 2, 6, 8, 1],
+  ];
+  const results = runTests(testCases, testFunction);
   results.forEach((result, index) => {
     console.log(`${index}: ${testCases[index]} --> ${result}`);
   });
