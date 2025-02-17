@@ -1,7 +1,9 @@
-import { ListNode } from "classes/ListNode";
-import { maxAreaOptimized as testFunction } from "./solutions";
+import { threeSumClosest } from "./solutions";
 
-function runTests<T, S>(testCases: T[], callback: (param: T) => S): S[] {
+function runTestsSingleInput<TestCase, ReturnType>(
+  testCases: TestCase[],
+  callback: (param: TestCase) => ReturnType
+): ReturnType[] {
   return testCases.map((testCase, index) => {
     console.log(
       `Running test case ${index}.\nInput: ${JSON.stringify(testCase)}`
@@ -13,15 +15,38 @@ function runTests<T, S>(testCases: T[], callback: (param: T) => S): S[] {
   });
 }
 
+function runTestsMultipleInputs<T, ReturnType>(
+  testCases: T[][],
+  callback: (...args: T[]) => ReturnType
+): ReturnType[] {
+  return testCases.map((testCase, index) => {
+    console.log(
+      `Running test case ${index}.\nInput: ${JSON.stringify(testCase)}`
+    );
+
+    const result = callback(...testCase);
+    console.log(`Output: ${result}`);
+    console.log(`---------------------------------------------------------`);
+    return result;
+  });
+}
+
 function main() {
+  // const testCases = [[23, 2, 9999, 2345]];
   const testCases = [
-    [1, 8, 6, 2, 5, 4, 8, 3, 7],
-    [1, 1],
-    [7, 3, 8, 4, 5, 2, 6, 8, 1],
+    [[-1, 1, -4, 2], 2],
+    [[0, 0, 0], 0],
   ];
-  const results = runTests(testCases, testFunction);
+
+  const results = runTestsMultipleInputs(testCases, threeSumClosest);
   results.forEach((result, index) => {
-    console.log(`${index}: ${testCases[index]} --> ${result}`);
+    if (typeof testCases[index] !== "object")
+      console.log(`${index}: ${testCases[index]} --> ${result}`);
+    else {
+      console.log(
+        `${index}: ${JSON.stringify(testCases[index])} --> ${result}`
+      );
+    }
   });
 
   return;

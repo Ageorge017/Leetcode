@@ -1,4 +1,3 @@
 export * from "./integerToRoman";
 export * from "./letterCombinations";
-export * from "./removeNthNodeFromEndofList";
-export * from "./containerWithMostWater";
+export * from "./3sumClosest";
