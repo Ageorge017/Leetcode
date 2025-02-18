@@ -1,5 +1,5 @@
 import { ListNode } from "./classes/ListNode";
-import { removeNthFromEnd } from "./solutions";
+import { generateParenthesis } from "./solutions";
 
 function runTestsSingleInput<TestCase, ReturnType>(
   testCases: TestCase[],
@@ -35,15 +35,9 @@ function runTestsMultipleInputs<T, ReturnType>(
 }
 
 function main() {
-  const testCases = [
-    [ListNode.createLinkedListFromArray([1, 2, 3, 4, 5]), 2],
-    [ListNode.createLinkedListFromArray([1]), 1],
-    [ListNode.createLinkedListFromArray([1, 2]), 1],
-    [ListNode.createLinkedListFromArray([1, 2, 3, 4, 5]), 5],
-    [ListNode.createLinkedListFromArray([1, 2, 3, 4, 5]), 1],
-  ];
+  const testCases = [1, 2, 3, 4];
 
-  const results = runTestsMultipleInputs(testCases, removeNthFromEnd);
+  const results = runTestsSingleInput(testCases, generateParenthesis);
   results.forEach((result, index) => {
     console.log(
       `${index}: ${
