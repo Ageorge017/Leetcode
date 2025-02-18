@@ -34,42 +34,24 @@ function runTestsMultipleInputs<T, ReturnType>(
   });
 }
 
-function createListNode(values: number[]): ListNode {
-  if (values.length === 0) return null;
-
-  const head = new ListNode(values[0], null);
-  let current = head;
-  values.shift();
-
-  if (values.length === 0) return head;
-
-  values.forEach((value, index) => {
-    const newNode = new ListNode(value, null);
-    current.next = newNode;
-    current = newNode;
-  }, head);
-
-  return head;
-}
-
 function main() {
   const testCases = [
-    [createListNode([1, 2, 3, 4, 5]), 2],
-    [createListNode([1]), 1],
-    [createListNode([1, 2]), 1],
-    [createListNode([1, 2, 3, 4, 5]), 5],
-    [createListNode([1, 2, 3, 4, 5]), 1],
+    [ListNode.createLinkedListFromArray([1, 2, 3, 4, 5]), 2],
+    [ListNode.createLinkedListFromArray([1]), 1],
+    [ListNode.createLinkedListFromArray([1, 2]), 1],
+    [ListNode.createLinkedListFromArray([1, 2, 3, 4, 5]), 5],
+    [ListNode.createLinkedListFromArray([1, 2, 3, 4, 5]), 1],
   ];
 
   const results = runTestsMultipleInputs(testCases, removeNthFromEnd);
   results.forEach((result, index) => {
-    if (typeof testCases[index] !== "object")
-      console.log(`${index}: ${testCases[index]} --> ${result}`);
-    else {
-      console.log(
-        `${index}: ${JSON.stringify(testCases[index])} --> ${result}`
-      );
-    }
+    console.log(
+      `${index}: ${
+        typeof testCases[index] !== "object"
+          ? testCases[index]
+          : JSON.stringify(testCases[index])
+      } --> ${typeof result !== "object" ? result : JSON.stringify(result)}`
+    );
   });
 
   return;
