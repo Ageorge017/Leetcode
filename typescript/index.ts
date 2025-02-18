@@ -1,4 +1,5 @@
-import { threeSumClosest } from "./solutions";
+import { ListNode } from "./classes/ListNode";
+import { removeNthFromEnd } from "./solutions";
 
 function runTestsSingleInput<TestCase, ReturnType>(
   testCases: TestCase[],
@@ -25,20 +26,42 @@ function runTestsMultipleInputs<T, ReturnType>(
     );
 
     const result = callback(...testCase);
-    console.log(`Output: ${result}`);
+    console.log(
+      `Output: ${typeof result === "object" ? JSON.stringify(result) : result}`
+    );
     console.log(`---------------------------------------------------------`);
     return result;
   });
 }
 
+function createListNode(values: number[]): ListNode {
+  if (values.length === 0) return null;
+
+  const head = new ListNode(values[0], null);
+  let current = head;
+  values.shift();
+
+  if (values.length === 0) return head;
+
+  values.forEach((value, index) => {
+    const newNode = new ListNode(value, null);
+    current.next = newNode;
+    current = newNode;
+  }, head);
+
+  return head;
+}
+
 function main() {
-  // const testCases = [[23, 2, 9999, 2345]];
   const testCases = [
-    [[-1, 1, -4, 2], 2],
-    [[0, 0, 0], 0],
+    [createListNode([1, 2, 3, 4, 5]), 2],
+    [createListNode([1]), 1],
+    [createListNode([1, 2]), 1],
+    [createListNode([1, 2, 3, 4, 5]), 5],
+    [createListNode([1, 2, 3, 4, 5]), 1],
   ];
 
-  const results = runTestsMultipleInputs(testCases, threeSumClosest);
+  const results = runTestsMultipleInputs(testCases, removeNthFromEnd);
   results.forEach((result, index) => {
     if (typeof testCases[index] !== "object")
       console.log(`${index}: ${testCases[index]} --> ${result}`);

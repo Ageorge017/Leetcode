@@ -9,7 +9,10 @@
     "noEmit": false,
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "paths": {
+      "classes/*": ["classes/*"]
+    }
   },
   "include": ["**/*.ts"],
   "exclude": ["./build/**/*"]
