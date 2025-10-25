@@ -5,14 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
-    "start": "npm run build && node ./build/index",
+    "build": "ts-node esbuild.config.ts",
+    "start": "npm run build && node ./build/output.js",
     "clean": "rm -rf ./build"
   },
   "author": "albertgeorge",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.9.0",
+    "esbuild": "^0.25.11",
     "ts-node": "^10.9.1",
     "tslib": "^2.6.2",
     "typescript": "^5.2.2"

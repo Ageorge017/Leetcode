@@ -24,3 +24,15 @@ export class ListNode {
     return head;
   }
 }
+
+export const createListNodes = (nums: number[]): ListNode | null => {
+  let dummy = new ListNode();
+  let ptr = dummy;
+
+  nums.forEach((num) => {
+    const newNode = new ListNode(num);
+    ptr.next = newNode;
+    ptr = ptr.next;
+  });
+  return dummy.next;
+};

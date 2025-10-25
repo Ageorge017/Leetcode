@@ -1,6 +1,6 @@
 import { TreeNode } from "../classes/TreeNode";
 
-function inorderTraversal(root: TreeNode | null): number[] {
+export function inorderTraversal(root: TreeNode | null): number[] {
   return checkNodes(root, []);
 }
 

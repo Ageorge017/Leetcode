@@ -1,10 +1,8 @@
-import { ListNode } from "./classes/ListNode";
-import { generateParenthesis } from "./solutions";
+import { createTree } from "./classes/TreeNode";
+import { createListNodes, ListNode } from "./classes/ListNode";
+import { inorderTraversal as testFunction } from "./solutions";
 
-function runTestsSingleInput<TestCase, ReturnType>(
-  testCases: TestCase[],
-  callback: (param: TestCase) => ReturnType
-): ReturnType[] {
+function runTests<T, S>(testCases: T[], callback: (param: T) => S): S[] {
   return testCases.map((testCase, index) => {
     console.log(
       `Running test case ${index}.\nInput: ${JSON.stringify(testCase)}`
@@ -16,36 +14,17 @@ function runTestsSingleInput<TestCase, ReturnType>(
   });
 }
 
-function runTestsMultipleInputs<T, ReturnType>(
-  testCases: T[][],
-  callback: (...args: T[]) => ReturnType
-): ReturnType[] {
-  return testCases.map((testCase, index) => {
-    console.log(
-      `Running test case ${index}.\nInput: ${JSON.stringify(testCase)}`
-    );
-
-    const result = callback(...testCase);
-    console.log(
-      `Output: ${typeof result === "object" ? JSON.stringify(result) : result}`
-    );
-    console.log(`---------------------------------------------------------`);
-    return result;
-  });
-}
-
 function main() {
-  const testCases = [1, 2, 3, 4];
+  const testCases = [
+    [1, null, 2, 3],
+    [1, 2, 3, 4, 5, null, 8, null, null, 6, 7, 9],
+  ];
 
-  const results = runTestsSingleInput(testCases, generateParenthesis);
+  const nodes = testCases.map((testCase) => createTree(testCase));
+
+  const results = runTests(nodes, testFunction);
   results.forEach((result, index) => {
-    console.log(
-      `${index}: ${
-        typeof testCases[index] !== "object"
-          ? testCases[index]
-          : JSON.stringify(testCases[index])
-      } --> ${typeof result !== "object" ? result : JSON.stringify(result)}`
-    );
+    console.log(`${index}: ${testCases[index]} --> ${result}`);
   });
 
   return;
