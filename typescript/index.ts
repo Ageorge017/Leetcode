@@ -1,6 +1,7 @@
 import { createTree } from "./classes/TreeNode";
-import { createListNodes, ListNode } from "./classes/ListNode";
+import { createListNodes } from "./classes/ListNode";
 import { inorderTraversal as testFunction } from "./solutions";
+import testConfig from "test.config";
 
 function runTests<T, S>(testCases: T[], callback: (param: T) => S): S[] {
   return testCases.map((testCase, index) => {
@@ -15,16 +16,19 @@ function runTests<T, S>(testCases: T[], callback: (param: T) => S): S[] {
 }
 
 function main() {
-  const testCases = [
-    [1, null, 2, 3],
-    [1, 2, 3, 4, 5, null, 8, null, null, 6, 7, 9],
-  ];
+  const { inputs, isLinkedList, isTree } = testConfig;
 
-  const nodes = testCases.map((testCase) => createTree(testCase));
+  const testCases = inputs.map((testCase) => {
+    return isTree
+      ? createTree(testCase)
+      : isLinkedList
+      ? createListNodes(testCase)
+      : inputs;
+  });
 
-  const results = runTests(nodes, testFunction);
+  const results = runTests(testCases, testFunction);
   results.forEach((result, index) => {
-    console.log(`${index}: ${testCases[index]} --> ${result}`);
+    console.log(`${index}: ${inputs[index]} --> ${result}`);
   });
 
   return;

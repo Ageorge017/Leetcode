@@ -1,0 +1,8 @@
+export default {
+  isTree: true,
+  isLinkedList: false,
+  inputs: [
+    [1, null, 2, 3],
+    [1, 2, 3, 4, 5, null, 8, null, null, 6, 7, 9],
+  ],
+};
